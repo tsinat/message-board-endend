@@ -50,14 +50,14 @@ exports.create = function(message, cb){
 
     messages.push(newMessage);
 
-    fs.writeFile(dataFile, JSON.stringify(messages), err =>{
+    fs.writeFile(dataFile, JSON.stringify(messages, null, 2), err =>{
         cb(err, messages);
     });
   });
 };
 
 
-exports.editMessage = function(message2, cb){
+exports.editMessage = function(message2,myId, cb){
     // if(!id)return cb('id required.');
     this.findAll((err,messages) =>{
         if(err){
@@ -70,12 +70,12 @@ exports.editMessage = function(message2, cb){
             date: myDate,
             image:message2.image,
             message:message2.message,
-            id:message2.id
+            id:myId
         };
      var oldMessage = messages.filter(message => message2.id ==id)[0];
      var index = messages.indexOf(oldMessage);
      messages[index]= editedMessage;
-     fs.writeFile(dataFile, JSON.stringify(messages), err =>{
+     fs.writeFile(dataFile, JSON.stringify(messages, null,2), err =>{
          cb(err);
      });
  });
@@ -91,7 +91,7 @@ exports.removeById = function(id, cb){
          var index = messages.indexOf(myMessage)
          messages.splice(index, 1);
         // messages = messages.filter(message =>message.id !=id);
-        fs.writeFile(dataFile, JSON.stringify(messages), err =>{
+        fs.writeFile(dataFile, JSON.stringify(messages, null, 2), err =>{
             cb(err);
         });
     });

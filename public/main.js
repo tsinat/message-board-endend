@@ -1,7 +1,7 @@
 $(function() {
     $('.form').submit(sendMessage);
     $('.delete').click(deleteMessage);
-    // $('.edit').click(editMessage);
+    $('.edit').click(editMessage);
     // getMessage();
 });
 
@@ -48,15 +48,15 @@ function deleteMessage(e) {
     });
 }
 
-// function editMessage(e) {
-//     var id = $(e.target).attr('id');
-//
-//     console.log($(this).closest().children());
-//     $.ajax({
-//         url: `/message/${id}`,
-//         type: 'PUT',
-//         data:{ },
-//         success: function(response) {
-//         }
-//     });
-// }
+function editMessage(e) {
+    var id = $(e.target).attr('id');
+
+    console.log($(this).closest().children());
+    $.ajax({
+        url: `/message/${id}`,
+        type: 'PUT',
+        data:{ },
+        success: function(response) {
+        }
+    });
+}

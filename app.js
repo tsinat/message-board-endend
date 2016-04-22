@@ -69,18 +69,19 @@ app.route('/message/:id')
             if(err){
                 return res.status(400).send(err);
             }
-            console.log('dlete callback is called');
+            console.log('delete callback is called');
             res.send();
     })
-    .put((req, res, next) =>{
-        console.log('put is working');
-        Messages.editMessage(req.body, err =>{
-            if(err){
-                return res.status(400).send(err);
-            }
-            res.send();
-        })
-    })
+    // .put((req, res, next) =>{
+    //     console.log('put is working');
+    //     var id = req.params.id;
+    //     Messages.editMessage((req.body,id), err =>{
+    //         if(err){
+    //             return res.status(400).send(err);
+    //         }
+    //         res.send();
+    //     });
+    // });
 });
 
 
