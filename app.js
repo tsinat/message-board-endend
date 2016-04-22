@@ -74,7 +74,7 @@ app.route('/message/:id')
     })
     .put((req, res, next) =>{
         console.log('put is working');
-        Messages.eidtMessage(req.body, err =>{
+        Messages.editMessage(req.body, err =>{
             if(err){
                 return res.status(400).send(err);
             }

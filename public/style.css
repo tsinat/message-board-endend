@@ -3,9 +3,13 @@ body{
     padding-bottom:60px;
 
 }
+h1,h4{
+    text-align:center;
+}
 h5{
-    text-align:left;
-    padding-top:20px;
+    /*text-align:left;*/
+    margin-left:20px;
+    padding-top:60px;
     padding-left:20px;
 }
 .imageContainer {
@@ -56,16 +60,19 @@ h5{
     width:150px;
     height:150px;
     float: left;
+    border:2px solid grey;
 }
 .delete{
     position:relative;
     left:300px;
-    top:20px;
+    /*top:20px;*/
+    bottom:30px;
 }
 .edit{
     position:relative;
     left:200px;
-    top:20px;
+    /*top:20px;*/
+    bottom:30px;
 }
 .newElement{
     color:black;

@@ -3,6 +3,7 @@
 var fs = require('fs');
 var path = require('path');
 var uuid = require('uuid');
+var moment = require('moment');
 
 var dataFile = path.join(__dirname,'../data/messages.json');
 
@@ -37,10 +38,12 @@ exports.create = function(message, cb){
         if(err){
             return cb(err);
         }
+    var myDate = moment().format('MMMM Do YYYY, h:mm:ss a');
     var newMessage ={
         name:message.name,
         email:message.email,
         image:message.image,
+        date:myDate,
         message:message.message,
         id:uuid()
     };
@@ -54,20 +57,22 @@ exports.create = function(message, cb){
 };
 
 
-exports.eidtMessage = function(message, cb){
+exports.editMessage = function(message2, cb){
     // if(!id)return cb('id required.');
     this.findAll((err,messages) =>{
         if(err){
             return cb(err)
         }
+        var myDate = moment().format('MMMM Do YYYY, h:mm:ss a');
         var editedMessage ={
-            name:message.name,
-            email:message.email,
-            image:message.image,
-            message:message.message,
-            id:message.id
+            name:message2.name,
+            email:message2.email,
+            date: myDate,
+            image:message2.image,
+            message:message2.message,
+            id:message2.id
         };
-     var oldMessage = messages.filter(message => message.id ==id)[0];
+     var oldMessage = messages.filter(message => message2.id ==id)[0];
      var index = messages.indexOf(oldMessage);
      messages[index]= editedMessage;
      fs.writeFile(dataFile, JSON.stringify(messages), err =>{

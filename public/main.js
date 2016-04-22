@@ -1,7 +1,7 @@
 $(function() {
     $('.form').submit(sendMessage);
     $('.delete').click(deleteMessage);
-    $('.edit').click(editMessage);
+    // $('.edit').click(editMessage);
     // getMessage();
 });
 
@@ -24,8 +24,10 @@ function sendMessage(e) {
 
             var img = $('<img>').attr('src', image);
             // img.attr('src', image);
-            var message = $('<h3>').text(message);
-            div.append(img, message);
+            var $message = $('<h3>').text(message);
+            var $time = $('<h5>').text(Date.now())
+            console.log(message);
+            div.append(img, $message, $time);
             $('.message-board').append(div);
             // console.log('data send',data);
         })
@@ -41,20 +43,20 @@ function deleteMessage(e) {
         type: 'DELETE',
         success: function(response) {
             $(e.target).closest('div').remove();
-            //...
+
         }
     });
 }
 
-function editMessage(e) {
-    var id = $(e.target).attr('id');
-
-    console.log($(this).closest().children());
-    $.ajax({
-        url: `/message/${id}`,
-        type: 'PUT',
-        data:{ },
-        success: function(response) {
-        }
-    });
-}
+// function editMessage(e) {
+//     var id = $(e.target).attr('id');
+//
+//     console.log($(this).closest().children());
+//     $.ajax({
+//         url: `/message/${id}`,
+//         type: 'PUT',
+//         data:{ },
+//         success: function(response) {
+//         }
+//     });
+// }
